@@ -1,4 +1,5 @@
-﻿  Source.cpp
+﻿  LoadShaders.cpp
+  Source.cpp
 Source.cpp(131): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(205): note: see declaration of 'fopen'
 Source.cpp(253): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
@@ -15,10 +16,10 @@ Source.cpp(296): warning C4996: 'fscanf': This function or variable may be unsaf
 Source.cpp(381): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
 MSVCRT.lib(initializers.obj) : warning LNK4098: defaultlib 'libcmt.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
   Generating code
-  44 of 589 functions ( 7.5%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    30 functions had inline decision re-evaluated but remain unchanged
+  586 of 589 functions (99.5%) were compiled, the rest were copied from previous compilation.
+    23 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-glew32s.lib(glew.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'glew32s.lib(glew.obj)' or at 'D:\2ano2semestre\3d\trabFinal\P3D_IronMan\TrabalhoFinal\x64\Release\vc120.pdb'; linking object as if no debug info
-  TrabalhoFinal.vcxproj -> D:\2ano2semestre\3d\trabFinal\P3D_IronMan\TrabalhoFinal\x64\Release\TrabalhoFinal.exe
-  TrabalhoFinal.vcxproj -> D:\2ano2semestre\3d\trabFinal\P3D_IronMan\TrabalhoFinal\x64\Release\TrabalhoFinal.pdb (Full PDB)
+glew32s.lib(glew.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'glew32s.lib(glew.obj)' or at 'C:\Users\andre\OneDrive\Documents\GitHub\P3D_IronMan\TrabalhoFinal\x64\Release\vc120.pdb'; linking object as if no debug info
+  TrabalhoFinal.vcxproj -> C:\Users\andre\OneDrive\Documents\GitHub\P3D_IronMan\TrabalhoFinal\x64\Release\TrabalhoFinal.exe
+  TrabalhoFinal.vcxproj -> C:\Users\andre\OneDrive\Documents\GitHub\P3D_IronMan\TrabalhoFinal\x64\Release\TrabalhoFinal.pdb (Full PDB)

@@ -194,13 +194,13 @@ int main(void)
 	glBindBuffer(GL_ARRAY_BUFFER, normalbuffer);
 	glBufferData(GL_ARRAY_BUFFER, out_normals.size() * sizeof(glm::vec3), &out_normals[0], GL_STATIC_DRAW);
 
-	glVertexAttribPointer(uvbuffer, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)(0));//3 * sizeof(float)->0 and 8->3
-	glVertexAttribPointer(normalbuffer, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)(0));//(3 + 3) * sizeof(float)->0 and 8->2
-	glVertexAttribPointer(vertexbuffer, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)(0));//8->3 (2nd)
+	//glVertexAttribPointer(uvbuffer, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)(0));//3 * sizeof(float)->0 and 8->3
+	//glVertexAttribPointer(normalbuffer, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)(0));//(3 + 3) * sizeof(float)->0 and 8->2
+	//glVertexAttribPointer(vertexbuffer, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)(0));//8->3 (2nd)
 
-	glEnableVertexAttribArray(uvbuffer);
+	/*glEnableVertexAttribArray(uvbuffer);
 	glEnableVertexAttribArray(normalbuffer);
-	glEnableVertexAttribArray(vertexbuffer);
+	glEnableVertexAttribArray(vertexbuffer);*/
 
 	glViewport(0, 0, WIDTH, HEIGHT);
 
@@ -223,13 +223,7 @@ void print_error(int error, const char *description) {
 void display(void) {
 	do
 	{
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-		static const GLfloat black[] = {
-			0.0f, 0.0f, 0.0f, 0.0f
-		};
-		// Limpa o buffer de cor
-		glClearBufferfv(GL_COLOR, 0, black);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
 		// Atualiza os dados do Uniform
 		Model = glm::rotate(glm::mat4(), angle += 0.0002f, glm::normalize(glm::vec3(1.0f, 1.0f, 0.0f)));
@@ -246,11 +240,17 @@ void display(void) {
 		GLint normalViewId = glGetProgramResourceLocation(programa, GL_UNIFORM, "NormalMatrix");
 		glProgramUniformMatrix3fv(programa, normalViewId, 1, GL_FALSE, glm::value_ptr(NormalMatrix));
 
+
+		glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
+		glEnableClientState(GL_VERTEX_ARRAY);
 		// Vincula (torna ativo) o VAO
-		glUseProgram(programa);//NEW
-		glBindVertexArray(VAO);
+		//glUseProgram(programa);//NEW
+		//glBindVertexArray(VAO);
 		// Envia comando para desenho de primitivas GL_TRIANGLES, que utilizará os dados do VAO vinculado.
 		glDrawArrays(GL_TRIANGLES, 0, out_vertices.size());
+
+		glDisableClientState(GL_VERTEX_ARRAY);
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
